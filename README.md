@@ -58,3 +58,14 @@ Validation:
 Scan results were verified using:
 nmap <target-ip>
 Comparison confirmed accuracy of open port detection.
+
+
+
+
+## Changelog
+
+**v2** — Refactored for reliability and correctness:
+- Fixed a threading bug where `join()` only waited on the last-created thread instead of all threads, so the scan could report completion before every port had actually been checked
+- Replaced raw thread-per-port with a bounded `ThreadPoolExecutor` to avoid spawning thousands of unmanaged threads on large port ranges
+- Added hostname resolution with proper error handling instead of crashing on bad input
+- Added a CLI (`argparse`) so the tool runs like `python3 port_scanner.py <host> -p 1-1000`
