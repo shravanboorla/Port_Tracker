@@ -69,3 +69,7 @@ Comparison confirmed accuracy of open port detection.
 - Replaced raw thread-per-port with a bounded `ThreadPoolExecutor` to avoid spawning thousands of unmanaged threads on large port ranges
 - Added hostname resolution with proper error handling instead of crashing on bad input
 - Added a CLI (`argparse`) so the tool runs like `python3 port_scanner.py <host> -p 1-1000`
+
+
+
+Usage:python3 port_scanner.py scanme.nmap.org -p 1-1000 -t 100
